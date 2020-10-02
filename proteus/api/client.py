@@ -180,6 +180,28 @@ class ProteusClientApi(object):
                 print e
                 return False
         return None
+    
+    def _get_parent(self, entity_id):
+        """
+        Wrapper for Proteus SOAP API Method getParent
+
+        :Parameters:
+            - `entity_id` : int
+
+        :return:
+            `APIEntity`
+        """
+        if self._is_connected:
+            try:
+                entity = self._client.service.getParent(
+                    entity_id
+                )
+                return entity
+            except Exception as e:
+                print (e)
+                return False
+        return None
+
 
     def is_valid_connection(self):
         """
